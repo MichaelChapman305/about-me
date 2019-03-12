@@ -24,7 +24,7 @@ function startQuiz() {
       return;
     } else {
       console.log('Question 1: Statement passes');
-      if (guitarQuestion.toLowerCase() === 'yes' || guitarQuestion.toLowerCase() === 'y' && guitarQuestion !== null) {
+      if (guitarQuestion.toLowerCase() === 'yes' || guitarQuestion.toLowerCase() === 'y') {
         score += 1;
         alert('Correct, I do play the guitar!');
         console.log(`Yes! Score is now ${score}`);
@@ -49,7 +49,7 @@ function startQuiz() {
       return;
     } else {
       console.log('Question 2: Statement passes');
-      if (backpackingQuestion.toLowerCase() === 'yes' || backpackingQuestion.toLowerCase() === 'y' && backpackingQuestion !== null) {
+      if (backpackingQuestion.toLowerCase() === 'yes' || backpackingQuestion.toLowerCase() === 'y') {
         score += 1;
         alert('Correct, I perfer to backpack in the winter!');
         console.log(`Yes! Score is now ${score}`);
@@ -74,7 +74,7 @@ function startQuiz() {
       return;
     } else {
       console.log('Question 3: Statement passes');
-      if (summerQuestion.toLowerCase() === 'yes' || summerQuestion.toLowerCase() === 'y' && summerQuestion !== null) {
+      if (summerQuestion.toLowerCase() === 'yes' || summerQuestion.toLowerCase() === 'y') {
         alert('Wrong, I actually hate the summer heat!');
         console.log(`No! Score is still ${score}`);
       } else {
@@ -124,7 +124,7 @@ function startQuiz() {
       return;
     } else {
       console.log('Question 5: Statement passes');
-      if (catQuestion.toLowerCase() === 'yes' || catQuestion.toLowerCase() === 'y' && catQuestion !== null) {
+      if (catQuestion.toLowerCase() === 'yes' || catQuestion.toLowerCase() === 'y') {
         alert('Wrong, my cat\'s name is actually Alastor!');
         console.log(`No! Score is still ${score}`);
       } else {
