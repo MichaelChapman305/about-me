@@ -5,7 +5,6 @@ function startQuiz() {
 
   const thankYouMessage = 'Thank you for playing!';
   const unacceptableAnswerMessage = 'Sorry, that was not an accepted answer';
-
   let score = 0;
   let startQuiz = confirm('Would you like to start Michael\'s quiz? Give answers by typing Yes/No or Y/N!');
 
