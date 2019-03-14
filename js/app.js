@@ -1,145 +1,102 @@
 'use strict';
 
-function startQuiz() {
-  console.log('Quiz started');
+console.log('Quiz started');
+let startQuiz = confirm('Would you like to start Michael\'s quiz? Give answers by typing Yes/No or Y/N!');
 
-  const thankYouMessage = 'Thank you for playing!';
-  const unacceptableAnswerMessage = 'Sorry, that was not an accepted answer';
+if (startQuiz === true) {
+  let usersName = prompt('First off, what is your name? :)');
+  
+  const questionsArr = [['Do I play the guitar?', 'Do I perfer to go backpacking in the winter?', 'Do I love the summer?', 'Is my favorite show Penny Dreadful?', 'Do I have a cat named Tobby?'], ['y', 'y', 'n', 'y', 'n']];
+  const correctMessage = 'That was correct!';
+  let question;
   let score = 0;
-  let startQuiz = confirm('Would you like to start Michael\'s quiz? Give answers by typing Yes/No or Y/N!');
+  
+  for (let i = 0; i < questionsArr[0].length; i++) {
+    console.log(`loop: ${i}`);
+    question = prompt(questionsArr[0][i]);
 
-  if (startQuiz === true) {
-    let guitarQuestion = prompt('Do I play the guitar?');
-    console.log(`Guitar question: ${guitarQuestion}`);
+    if (question === null) {
+      console.log('Question was null');
+      alert('Thank you for playing!');
+      break;
+    } 
+      
+    while (question.toLowerCase() !== 'yes' && question.toLowerCase() !== 'y' && question.toLowerCase() !== 'no' && question.toLowerCase() !== 'n') {
+      console.log('Unnacceptable answer');
+      alert(`Sorry, ${question} is not an acceptable answer. Please give answers by typing Yes/No or Y/N!`);
+      question = prompt(questionsArr[0][i]);
+    }
 
-    if (guitarQuestion === null) {
-      console.log('Question 1: Returned null');
-      console.log('Quiz ending');
-      alert(thankYouMessage);
-      return;
-    } else if (guitarQuestion.toLowerCase() !== 'yes' && guitarQuestion.toLowerCase() !== 'y' && guitarQuestion.toLowerCase() !== 'no' && guitarQuestion.toLowerCase() !== 'n') {
-      console.log('Question 1: Unacceptable answer');
-      console.log('Quiz ending');
-      alert(unacceptableAnswerMessage);
-      return;
+    if (questionsArr[1][i] === 'y' && (question.toLowerCase() === 'y' || question.toLowerCase() === 'yes')) {
+      console.log('Correct yes:' + question.toLowerCase());
+      score++;
+      alert(correctMessage);
+    } else if (questionsArr[1][i] === 'n' && (question.toLowerCase() === 'n' || question.toLowerCase() === 'no')) {
+      console.log('Correct no: ' + question.toLowerCase());
+      score++;
+      alert(correctMessage);
     } else {
-      console.log('Question 1: Statement passes');
-      if (guitarQuestion.toLowerCase() === 'yes' || guitarQuestion.toLowerCase() === 'y') {
-        score += 1;
-        alert('Correct, I do play the guitar!');
-        console.log(`Yes! Score is now ${score}`);
+      console.log('wrong:' + question.toLowerCase());
+      alert('Sorry, that was not correct :/');
+    }
+  }
+
+  if (score > 3) {
+    console.log('Final score: win');
+    const bonusGame = confirm(`Congratulations! You got ${score} questions correct! Would you like to play the bonus round for a prize?`);
+
+    if (bonusGame === true) {
+      console.log('Start bonus game');
+
+      const activityArr = ['kayaking', 'rafting', 'fishing', 'hunting', 'hiking', 'snowboarding'];
+      let win = false;
+      let randomNumber = Math.floor(Math.random() * (50 - 25) + 25);
+      let guess = 1;
+      let numberAnswer = prompt('I am thinking of a number between 25 and 50! Type your answer below') * 1;
+
+      while (numberAnswer !== randomNumber) {
+        if (typeof numberAnswer !== 'number') {
+          console.log(typeof numberAnswer);
+          alert(`Sorry, ${numberAnswer} is not an acceptable answer. Please give answers by typing a number below!`);
+        } else if (numberAnswer > randomNumber) {
+          alert('You\'re guessing too high!');
+        } else if (numberAnswer < randomNumber) {
+          alert('You\'re guessing too low!');
+        } else {
+          break;
+        }
+
+        numberAnswer = prompt('I am thinking of a number between 25 and 50! Type your answer below') * 1;
+        guess++;
+      }
+
+      alert(`Wow, congratulations, it only took you ${guess} tries which brings your score up to ${score += 1}! Now for the final question!`);
+      let answer = prompt('Name a type of outdoor activity that I enjoy that isn\'t backpacking!');
+
+      for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < activityArr.length; j++) {
+          if (activityArr[j] === answer.toLowerCase()) {
+            win = true;
+          }
+        }
+        if (win === true) {
+          break;
+        } else {
+          alert(`Sorry try again, you only have ${6 - i} left`);
+          answer = prompt('Name a type of outdoor activity that I enjoy that isn\'t backpacking!');
+        }
+      }
+      
+      if (win === true) {
+        alert(`Congratulations ${usersName}!!! You won the game with ${score += 1} points!`);
       } else {
-        alert('Wrong, I have been playing the guitar for most of my life!');
-        console.log(`No! Score is still ${score}`);
+        alert('I\'m sorry, you didn\'t make any correct choices and lose all of your points :(');
       }
     }
-
-    let backpackingQuestion = prompt('Do I perfer to go backpacking in the winter?');
-    console.log(`Backpacking question: ${backpackingQuestion}`);
-
-    if (backpackingQuestion === null) {
-      console.log('Question 2: Returned null');
-      console.log('Quiz ending');
-      alert(thankYouMessage);
-      return;
-    } else if (backpackingQuestion.toLowerCase() !== 'yes' && backpackingQuestion.toLowerCase() !== 'y' && backpackingQuestion.toLowerCase() !== 'no' && backpackingQuestion.toLowerCase() !== 'n') {
-      console.log('Question 2: Unacceptable answer');
-      console.log('Quiz ending');
-      alert(unacceptableAnswerMessage);
-      return;
-    } else {
-      console.log('Question 2: Statement passes');
-      if (backpackingQuestion.toLowerCase() === 'yes' || backpackingQuestion.toLowerCase() === 'y') {
-        score += 1;
-        alert('Correct, I perfer to backpack in the winter!');
-        console.log(`Yes! Score is now ${score}`);
-      } else {
-        alert('Wrong, I actually do perfer to backpack in the winter!');
-        console.log(`No! Score is still ${score}`);
-      }
-    }
-
-    let summerQuestion = prompt('Do I love the summer?');
-    console.log(`Summer question: ${summerQuestion}`);
-
-    if (summerQuestion === null) {
-      console.log('Question 3: Returned null');
-      console.log('Quiz ending');
-      alert(thankYouMessage);
-      return;
-    } else if (summerQuestion.toLowerCase() !== 'yes' && summerQuestion.toLowerCase() !== 'y' && summerQuestion.toLowerCase() !== 'no' && summerQuestion.toLowerCase() !== 'n') {
-      console.log('Question 3: Unacceptable answer');
-      console.log('Quiz ending');
-      alert(unacceptableAnswerMessage);
-      return;
-    } else {
-      console.log('Question 3: Statement passes');
-      if (summerQuestion.toLowerCase() === 'yes' || summerQuestion.toLowerCase() === 'y') {
-        alert('Wrong, I actually hate the summer heat!');
-        console.log(`No! Score is still ${score}`);
-      } else {
-        score += 1;
-        alert('Correct, I don\'t like the summer heat!');
-        console.log(`Yes! Score is now ${score}`);
-      }
-    }
-
-    let tvShowQuestion = prompt('Is my favorite show Penny Dreadful?');
-    console.log(`TV Show question: ${tvShowQuestion}`);
-
-    if (tvShowQuestion === null) {
-      console.log('Question 4: Returned null');
-      console.log('Quiz ending');
-      alert(thankYouMessage);
-      return;
-    } else if (tvShowQuestion.toLowerCase() !== 'yes' && tvShowQuestion.toLowerCase() !== 'y' && tvShowQuestion.toLowerCase() !== 'no' && tvShowQuestion.toLowerCase() !== 'n') {
-      console.log('Question 4: Unacceptable answer');
-      console.log('Quiz ending');
-      alert(unacceptableAnswerMessage);
-      return;
-    } else {
-      console.log('Question 4: Statement passes');
-      if (tvShowQuestion.toLowerCase() === 'yes' || tvShowQuestion.toLowerCase() === 'y') {
-        score += 1;
-        alert('Correct, my favorite show is Penny Dreadful!');
-        console.log(`Yes! Score is now ${score}`);
-      } else {
-        alert('Wrong, my favorite show is actually Penny Dreadful!');
-        console.log(`No! Score is still ${score}`);
-      }
-    }
-
-    let catQuestion = prompt('Do I have a cat named Tobby?');
-    console.log(`Cat question: ${catQuestion}`);
-
-    if (catQuestion === null) {
-      console.log('Question 5: Returned null');
-      console.log('Quiz ending');
-      alert(thankYouMessage);
-      return;
-    } else if (catQuestion.toLowerCase() !== 'yes' && catQuestion.toLowerCase() !== 'y' && catQuestion.toLowerCase() !== 'no' && catQuestion.toLowerCase() !== 'n') {
-      console.log('Question 5: Unacceptable answer');
-      console.log('Quiz ending');
-      alert(unacceptableAnswerMessage);
-      return;
-    } else {
-      console.log('Question 5: Statement passes');
-      if (catQuestion.toLowerCase() === 'yes' || catQuestion.toLowerCase() === 'y') {
-        alert('Wrong, my cat\'s name is actually Alastor!');
-        console.log(`No! Score is still ${score}`);
-      } else {
-        score += 1;
-        alert('Correct, my cat\'s name is Alastor!');
-        console.log(`Yes! Score is now ${score}`);
-      }
-    }
-
-    if (score > 3) {
-      console.log('Final score');
-      alert(`Congratulations! You got ${score} questions correct!`);
-    } else {
-      console.log('Final score');
-      alert(`I'm sorry, you only got ${score} questions right :(`);
-    }
+  } else if (score === 0) {
+    alert('You didn\'t get any answers right :(');
+  } else {
+    console.log('Final score: lost');
+    alert(`I'm sorry, you only got ${score} questions right :(`);
   }
 }

@@ -2,6 +2,12 @@ body {
   background-color: rgb(245, 245, 245);
 }
 
+h3 {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
 section {
   text-align: center;
   margin-top: 5%;
@@ -14,7 +20,7 @@ img {
   border-radius: 50%;
 }
 
-button {
+/*button {
   width: 250px;
   height: 50px;
   font-size: 25px;
@@ -27,4 +33,42 @@ button {
   cursor: pointer;
   outline: none;
   border-radius: 10px;
+}*/
+
+#list-section {
+}
+
+article {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#favorites-list {
+  margin-right: 10em;
+}
+
+#education-history {
+  margin-left: 10em;
+}
+
+ol {
+  text-align: left;
+}
+
+ol li {
+  list-style-type: upper-roman;
+  list-style-position: inside;
+}
+
+ul {
+  text-align: left;
+}
+
+ul li {
+  list-style-type: kannada;
+  list-style-position: inside;
+}
+
+li {
+  margin-top: 6px;
 }
