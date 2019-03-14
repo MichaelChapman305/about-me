@@ -20,7 +20,7 @@ if (startQuiz === true) {
       alert('Thank you for playing!');
       break;
     } 
-      
+    
     while (question.toLowerCase() !== 'yes' && question.toLowerCase() !== 'y' && question.toLowerCase() !== 'no' && question.toLowerCase() !== 'n') {
       console.log('Unnacceptable answer');
       alert(`Sorry, ${question} is not an acceptable answer. Please give answers by typing Yes/No or Y/N!`);
@@ -100,3 +100,5 @@ if (startQuiz === true) {
     alert(`I'm sorry, you only got ${score} questions right :(`);
   }
 }
+
+
