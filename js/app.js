@@ -4,12 +4,12 @@ console.log('Quiz started');
 let startQuiz = confirm('Would you like to start Michael\'s quiz? Give answers by typing Yes/No or Y/N!');
 
 if (startQuiz === true) {
-  let usersName = prompt('First off, what is your name? :)');
-  
   const questionsArr = [['Do I play the guitar?', 'Do I perfer to go backpacking in the winter?', 'Do I love the summer?', 'Is my favorite show Penny Dreadful?', 'Do I have a cat named Tobby?'], ['y', 'y', 'n', 'y', 'n']];
   const correctMessage = 'That was correct!';
   let question;
   let score = 0;
+
+  let usersName = prompt('First off, what is your name? :)');
   
   for (let i = 0; i < questionsArr[0].length; i++) {
     console.log(`loop: ${i}`);
