@@ -2,7 +2,6 @@
 
 var askUserName = (function() {
   return prompt('First off, what is your name? :)');
-  
 })();
 console.log(askUserName);
 
@@ -12,7 +11,6 @@ function startQuiz() {
   const correctMessage = 'That was correct!';
   let question;
   let score = 0;
-
 
   for (let i = 0; i < questionsArr[0].length; i++) {
     console.log(`loop: ${i}`);
